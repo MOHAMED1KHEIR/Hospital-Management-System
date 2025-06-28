@@ -107,6 +107,7 @@
             </div>
 
             <form method="post" asp-action="Delete" asp-controller="Search">
+                <input type="hidden" asp-for="Id" />
                 <!-- Textarea 2 rows height -->
                 <div class="form-outline">
                     <label asp-for="Description" style="color: black;" class="form-label" for="textAreaExample3">Description </label>
