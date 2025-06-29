@@ -187,15 +187,21 @@ namespace HMSproject.Controllers
         //Post
         [HttpPost]
 
-        public IActionResult Delete(Diagnose k,string? Id)
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(int id)
         {
+            var diagnosis = _db.Diagnose.Find(id);
+            if (diagnosis == null)
+            {
+                return NotFound();
+            }
 
-            _db.Diagnose.Remove(k);
+            _db.Diagnose.Remove(diagnosis);
             _db.SaveChanges();
             TempData["sure"] = "The Data has been delete successfully";
             return RedirectToAction("Spatient");
-            
-          
+
+
         }
 
 
